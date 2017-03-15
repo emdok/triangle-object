@@ -1,11 +1,10 @@
 //back end logic
-function Triangle(side1, side2, side3) {
-  this.sideA = side1;
-  this.sideB = side2;
-  this.sideC = side3;
+
+function Triangle(a, b, c) {
+  this.sideA = a;
+  this.sideB = b;
+  this.sideC = c;
 }
-
-
 
 
 
@@ -18,6 +17,21 @@ $(document).ready(function() {
       var sideTwo = $('input#side2').val();
       var sideThree = $('input#side3').val();
 
+      var triangleTest = new Triangle(sideOne, sideTwo, sideThree);
+
+      if (triangleTest.sideA + triangleTest.sideB <= triangleTest.sideC || triangleTest.sideB + triangleTest.sideC <= triangleTest.sideA) {
+        $("#output").text("not a triangle.");
+      }
+
+      else if (triangleTest.sideA != triangleTest.sideB && triangleTest.sideA != triangleTest.sideC && triangleTest.sideB != triangleTest.sideC) {
+        $("#output").text("Scalene!");
+      }
+      else if (triangleTest.sideA === triangleTest.sideB && triangleTest.sideB === triangleTest.sideC && triangleTest.sideC === triangleTest.sideA) {
+        $('#output').text('equalateral!');
+      }
+      else if (triangleTest.sideA === triangleTest.sideB != triangleTest.sideC || triangleTest.sideA === triangleTest.sideC != triangleTest.sideB || triangleTest.sideB === triangleTest.sideC != triangleTest.sideA) {
+        $("#output").text("Isosceles!");
+      }
 
   });
 });
